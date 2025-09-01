@@ -1838,5 +1838,183 @@
             lastTouchEnd = now;
         }, false);
     </script>
+
+    ...tot codul tău existent...
+
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Remove loading animation
+setTimeout(() => {
+    const loader = document.querySelector('.loading-animation');
+    if (loader) {
+        loader.style.display = 'none';
+    }
+}, 2000);
+
+// ... restul codului JavaScript existent ...
+</script>
+
+<!-- ADAUGĂ AICI NOUL COD -->
+<script>
+// ========== SISTEM MULTI-CLIENT ==========
+// Obține clientul din URL - acum direct din query string
+const urlParams = window.location.search.substring(1); // Elimină "?" din început
+const client = urlParams || 'profildecor'; // ProfilDecor ca default
+
+// Configurații pentru diferiți clienți
+const clientConfigs = {
+  'profildecor': {
+    name: 'ProfilDecor',
+    password: 'profildecor2025',
+    primaryColor: '#f97316',
+    packages: {
+      starter: { price: 2600, discount: 0 },
+      professional: { price: 4800, discount: 33, originalPrice: 4800 },
+      premium: { price: 7100, discount: 33, originalPrice: 7100 }
+    },
+    recommendedPackage: 'professional',
+    contactPhone: '+40752487271'
+  },
+  'altclient': {
+    name: 'AltClient',
+    password: 'altclient2025',
+    primaryColor: '#3b82f6',
+    packages: {
+      starter: { price: 3000, discount: 0 },
+      professional: { price: 5500, discount: 20, originalPrice: 5500 },
+      premium: { price: 8000, discount: 25, originalPrice: 8000 }
+    },
+    recommendedPackage: 'premium',
+    contactPhone: '+40752487271'
+  },
+  'clientnume': {
+    name: 'ClientNume',
+    password: 'parola2025',
+    primaryColor: '#10b981',
+    packages: {
+      starter: { price: 2800, discount: 0 },
+      professional: { price: 5000, discount: 30, originalPrice: 5000 },
+      premium: { price: 7500, discount: 30, originalPrice: 7500 }
+    },
+    recommendedPackage: 'professional',
+    contactPhone: '+40752487271'
+  }
+};
+
+// Obține configurația curentă
+const currentConfig = clientConfigs[client] || clientConfigs['profildecor'];
+
+// SUPRASCRIE funcția checkPassword existentă
+function checkPassword() {
+  const password = document.getElementById('passwordInput').value;
+
+  if (password === currentConfig.password) {
+    document.getElementById('authScreen').style.display = 'none';
+
+    localStorage.setItem('clientSession', JSON.stringify({
+      client: client,
+      timestamp: Date.now(),
+      expiresIn: 24 * 60 * 60 * 1000
+    }));
+
+    applyClientConfig();
+  } else {
+    document.getElementById('errorMsg').style.display = 'block';
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('passwordInput').focus();
+  }
+}
+
+// Aplică configurația clientului
+function applyClientConfig() {
+  document.body.innerHTML = document.body.innerHTML.replace(/ProfilDecor/g, currentConfig.name);
+
+  const professionalCard = document.querySelector('.pricing-card.featured');
+  if (professionalCard && currentConfig.packages.professional.discount > 0) {
+    const discountedPrice = Math.round(currentConfig.packages.professional.price * (1 - currentConfig.packages.professional.discount / 100));
+
+    const priceElement = professionalCard.querySelector('.accent-number');
+    if (priceElement) {
+      priceElement.textContent = discountedPrice.toLocaleString('ro-RO');
+    }
+
+    const originalPriceElement = professionalCard.querySelector('.price-original');
+    if (originalPriceElement) {
+      originalPriceElement.textContent = currentConfig.packages.professional.price.toLocaleString('ro-RO') + ' RON';
+    }
+  }
+
+  const premiumCards = document.querySelectorAll('.pricing-card');
+  const premiumCard = premiumCards[2];
+  if (premiumCard && currentConfig.packages.premium.discount > 0) {
+    const discountedPrice = Math.round(currentConfig.packages.premium.price * (1 - currentConfig.packages.premium.discount / 100));
+
+    const priceElement = premiumCard.querySelector('.accent-number');
+    if (priceElement) {
+      priceElement.textContent = discountedPrice.toLocaleString('ro-RO');
+    }
+
+    const originalPriceElement = premiumCard.querySelector('.price-original');
+    if (originalPriceElement) {
+      originalPriceElement.textContent = currentConfig.packages.premium.price.toLocaleString('ro-RO') + ' RON';
+    }
+  }
+
+  const starterCard = document.querySelector('.pricing-card:first-child');
+  if (starterCard) {
+    const priceElement = starterCard.querySelector('.accent-number');
+    if (priceElement) {
+      priceElement.textContent = currentConfig.packages.starter.price.toLocaleString('ro-RO');
+    }
+  }
+
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.href = `tel:${currentConfig.contactPhone}`;
+  });
+
+  if (currentConfig.packages.professional.discount !== 33) {
+    const offerBanner = document.querySelector('.offer-discount');
+    if (offerBanner) {
+      offerBanner.textContent = `-${currentConfig.packages.professional.discount}%`;
+    }
+  }
+}
+
+// SUPRASCRIE window.onload existent
+window.onload = function() {
+  const session = localStorage.getItem('clientSession');
+
+  if (session) {
+    const data = JSON.parse(session);
+
+    if (data.client === client && (Date.now() - data.timestamp < data.expiresIn)) {
+      document.getElementById('authScreen').style.display = 'none';
+      applyClientConfig();
+      return;
+    } else {
+      localStorage.removeItem('clientSession');
+    }
+  }
+
+  document.getElementById('passwordInput').focus();
+}
+
+console.log('Client activ:', client);
+console.log('URL pentru acest client:', `https://offer.danblocks.com/?${client}`);
+</script>
+
+</body>
+</html>
+
+    
 </body>
 </html>
