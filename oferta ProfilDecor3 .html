@@ -1,0 +1,1750 @@
+Put your HTML text here<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfilDecor × DanBlocks - Next Level Social Media</title>
+
+    <style>
+        /* Font Imports */
+        @font-face {
+            font-family: 'CalHeading';
+            src: url('https://danblocks-com.s3.us-west-2.amazonaws.com/fonts/primary-heading-cal.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Childish';
+            src: url('https://danblocks-com.s3.us-west-2.amazonaws.com/fonts/childish.regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* DanBlocks Core Colors */
+            --db-bg: #f4f4f4;
+            --db-bg-secondary: #f8f8f8;
+            --db-white: #ffffff;
+            --db-black: #27272a;
+            --db-gray: #71717a;
+            --db-gray-light: #a1a1aa;
+            --db-border: rgba(212, 212, 216, 0.7);
+            --db-accent: #f97316;
+            --db-accent-hover: #ea6a0c;
+            --db-gradient-dark: linear-gradient(135deg, #2c2c30 0%, #1d1d20 100%);
+            --db-gradient-accent: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            --db-success: #10b981;
+
+            /* Spacing System */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+
+            /* Animation Curves */
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--db-bg);
+            color: var(--db-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Noise Texture Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(244, 244, 244, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--db-border);
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .navbar.scrolled {
+            background: rgba(244, 244, 244, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-md) 0;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            transition: transform 0.3s var(--ease-bounce);
+            object-fit: contain;
+        }
+
+        .nav-logo:hover .logo-img {
+            transform: rotate(-10deg) scale(1.1);
+        }
+
+        .nav-partnership {
+            font-family: 'CalHeading', sans-serif;
+            font-size: 1.5rem;
+            color: var(--db-black);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .nav-x {
+            font-family: 'Childish', cursive;
+            color: var(--db-accent);
+            font-size: 1.8rem;
+            animation: pulse 2s infinite;
+        }
+
+        .nav-cta {
+            padding: 12px 24px;
+            background: var(--db-gradient-dark);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'CalHeading', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-smooth);
+            box-shadow: inset 0px 2px 0.4px 0px rgba(255, 255, 255, 0.16);
+            text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(80px + var(--space-3xl)) var(--space-lg) var(--space-3xl);
+            position: relative;
+            overflow: hidden;
+            background: var(--db-gradient-dark);
+        }
+
+        /* Animated Background Grid */
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 8px 20px;
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid var(--db-accent);
+            border-radius: 50px;
+            margin-bottom: var(--space-lg);
+            animation: fadeInDown 0.8s var(--ease-smooth);
+        }
+
+        .hero-badge-icon {
+            font-size: 1.2rem;
+        }
+
+        .hero-badge-text {
+            font-family: 'CalHeading', sans-serif;
+            color: var(--db-accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-title {
+            font-family: 'CalHeading', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            line-height: 1.1;
+            color: white;
+            margin-bottom: var(--space-lg);
+            animation: fadeInUp 0.8s var(--ease-smooth) 0.2s both;
+        }
+
+        .hero-title-accent {
+            font-family: 'Childish', cursive;
+            color: var(--db-accent);
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--space-xl);
+            animation: fadeInUp 0.8s var(--ease-smooth) 0.4s both;
+            font-weight: 300;
+            padding: 0 var(--space-sm);
+        }
+
+        /* Special Offer Banner */
+        .special-offer-banner {
+            background: var(--db-gradient-accent);
+            color: white;
+            padding: var(--space-md) var(--space-sm);
+            text-align: center;
+            margin-bottom: -1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-offer-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+
+        .offer-text {
+            font-family: 'CalHeading', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            position: relative;
+            z-index: 2;
+        }
+
+        .offer-discount {
+            font-family: 'Childish', cursive;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            margin: 0 var(--space-xs);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-top: var(--space-3xl);
+            animation: fadeInUp 0.8s var(--ease-smooth) 0.6s both;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-family: 'Childish', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--db-accent);
+            display: block;
+            animation: countUp 2s ease-out 1s both;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: var(--space-xs);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.1;
+            color: white;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            font-size: clamp(2rem, 4vw, 3rem);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            animation: float 7s ease-in-out infinite 2s;
+        }
+
+        .floating-element:nth-child(4) {
+            bottom: 30%;
+            right: 10%;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            animation: float 9s ease-in-out infinite 0.5s;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: var(--space-3xl) 0;
+            background: var(--db-bg);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-3xl);
+            animation: fadeIn 0.8s var(--ease-smooth);
+            padding: 0 var(--space-sm);
+        }
+
+        .section-label {
+            font-family: 'Childish', cursive;
+            color: var(--db-accent);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'CalHeading', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--db-black);
+            margin-bottom: var(--space-md);
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--db-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Pricing Cards Container */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-3xl);
+            position: relative;
+            padding: 0 var(--space-sm);
+        }
+
+        /* Pricing Card */
+        .pricing-card {
+            background: var(--db-white);
+            border: 1px solid var(--db-border);
+            border-radius: 24px;
+            padding: var(--space-xl);
+            position: relative;
+            transition: all 0.4s var(--ease-smooth);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--db-gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.4s var(--ease-smooth);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+            border-color: var(--db-accent);
+        }
+
+        .pricing-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--db-accent);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15);
+        }
+
+        .pricing-card.featured::after {
+            content: 'RECOMANDAT';
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: var(--db-gradient-accent);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            animation: pulse 2s infinite;
+        }
+
+        .pricing-header {
+            text-align: center;
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid var(--db-border);
+            margin-bottom: var(--space-lg);
+        }
+
+        .pricing-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--db-gradient-accent);
+            border-radius: 16px;
+            font-size: 2rem;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        .pricing-name {
+            font-family: 'CalHeading', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            color: var(--db-black);
+            margin-bottom: var(--space-xs);
+        }
+
+        .pricing-description {
+            color: var(--db-gray);
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .pricing-price {
+            text-align: center;
+            margin: var(--space-lg) 0;
+        }
+
+        .price-amount {
+            font-family: 'CalHeading', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--db-black);
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .price-amount .accent-number {
+            font-family: 'Childish', cursive;
+            color: var(--db-accent);
+        }
+
+        .price-original {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--db-gray-light);
+            text-decoration: line-through;
+            margin-bottom: var(--space-xs);
+            display: block;
+        }
+
+        .price-currency {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            color: var(--db-gray);
+            font-weight: 400;
+        }
+
+        .price-period {
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            color: var(--db-gray-light);
+            margin-top: var(--space-xs);
+        }
+
+        .price-note {
+            font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+            color: var(--db-success);
+            margin-top: var(--space-sm);
+            font-weight: 600;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: var(--space-lg) 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid rgba(212, 212, 216, 0.3);
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .feature:last-child {
+            border-bottom: none;
+        }
+
+        .feature:hover {
+            transform: translateX(4px);
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(249, 115, 22, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--db-accent);
+            flex-shrink: 0;
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .feature-text {
+            flex: 1;
+            color: var(--db-gray);
+            line-height: 1.5;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .feature-highlight {
+            font-family: 'CalHeading', sans-serif;
+            color: var(--db-black);
+            font-weight: 600;
+        }
+
+        .pricing-cta {
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--db-gradient-dark);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'CalHeading', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            cursor: pointer;
+            transition: all 0.3s var(--ease-smooth);
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0px 2px 0.4px 0px rgba(255, 255, 255, 0.16);
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .pricing-cta::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-cta:hover::after {
+            width: 400px;
+            height: 400px;
+        }
+
+        .pricing-cta.accent {
+            background: var(--db-gradient-accent);
+        }
+
+        /* Comparison Section */
+        .comparison {
+            padding: var(--space-3xl) 0;
+            background: var(--db-white);
+            border-top: 1px solid var(--db-border);
+            border-bottom: 1px solid var(--db-border);
+            overflow-x: auto;
+        }
+
+        .comparison-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 var(--space-sm);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: minmax(150px, 2fr) repeat(3, minmax(100px, 1fr));
+            gap: 1px;
+            background: var(--db-border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: var(--space-xl);
+            min-width: 600px;
+        }
+
+        .comparison-cell {
+            background: var(--db-white);
+            padding: var(--space-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+        }
+
+        .comparison-cell.header {
+            background: var(--db-gradient-dark);
+            color: white;
+            font-family: 'CalHeading', sans-serif;
+            font-size: clamp(0.85rem, 2vw, 1.1rem);
+            padding: var(--space-md) var(--space-sm);
+        }
+
+        .comparison-cell.feature-name {
+            justify-content: flex-start;
+            font-weight: 600;
+            color: var(--db-black);
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+        }
+
+        .comparison-check {
+            color: var(--db-accent);
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        }
+
+        .comparison-cross {
+            color: var(--db-gray-light);
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: var(--space-3xl) 0;
+            background: var(--db-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+            padding: 0 var(--space-sm);
+        }
+
+        .feature-card {
+            background: var(--db-white);
+            border: 1px solid var(--db-border);
+            border-radius: 16px;
+            padding: var(--space-lg);
+            transition: all 0.3s var(--ease-smooth);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.05) 0%, transparent 70%);
+            transition: all 0.6s var(--ease-smooth);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--db-accent);
+        }
+
+        .feature-card:hover::before {
+            top: -50%;
+            left: -50%;
+        }
+
+        .feature-card-icon {
+            width: clamp(60px, 15vw, 80px);
+            height: clamp(60px, 15vw, 80px);
+            margin: 0 auto var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 20px;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .feature-card:hover .feature-card-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: var(--db-gradient-accent);
+        }
+
+        .feature-card-title {
+            font-family: 'CalHeading', sans-serif;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--db-black);
+            margin-bottom: var(--space-sm);
+            text-align: center;
+        }
+
+        .feature-card-description {
+            color: var(--db-gray);
+            line-height: 1.6;
+            margin-bottom: var(--space-sm);
+            text-align: center;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .feature-card-benefit {
+            background: rgba(249, 115, 22, 0.05);
+            border-left: 3px solid var(--db-accent);
+            padding: var(--space-sm);
+            margin-top: var(--space-md);
+            border-radius: 8px;
+        }
+
+        .benefit-title {
+            font-weight: 600;
+            color: var(--db-accent);
+            font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Childish', cursive;
+        }
+
+        .benefit-text {
+            color: var(--db-black);
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            line-height: 1.5;
+        }
+
+        .benefit-text strong {
+            font-family: 'Childish', cursive;
+            color: var(--db-accent);
+            font-weight: 400;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: var(--space-3xl) var(--space-sm);
+            background: var(--db-gradient-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-family: 'CalHeading', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: white;
+            margin-bottom: var(--space-md);
+            animation: fadeInUp 0.8s var(--ease-smooth);
+        }
+
+        .cta-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--space-xl);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s var(--ease-smooth) 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s var(--ease-smooth) 0.4s both;
+        }
+
+        .cta-button {
+            padding: clamp(14px, 3vw, 18px) clamp(24px, 5vw, 36px);
+            border-radius: 12px;
+            font-family: 'CalHeading', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            cursor: pointer;
+            transition: all 0.3s var(--ease-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .cta-button.primary {
+            background: var(--db-gradient-accent);
+            color: white;
+            border: none;
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes iconFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-5px) rotate(5deg);
+            }
+            75% {
+                transform: translateY(5px) rotate(-5deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            :root {
+                --space-xs: 0.375rem;
+                --space-sm: 0.75rem;
+                --space-md: 1rem;
+                --space-lg: 1.5rem;
+                --space-xl: 2rem;
+                --space-2xl: 3rem;
+                --space-3xl: 4rem;
+            }
+
+            .container {
+                padding: 0 var(--space-md);
+            }
+
+            /* Mobile Navigation */
+            .nav-content {
+                padding: var(--space-sm) 0;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .nav-partnership {
+                font-size: 1rem;
+                gap: 0.25rem;
+            }
+
+            .nav-x {
+                font-size: 1.2rem;
+            }
+
+            .nav-cta {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            /* Mobile Hero */
+            .hero {
+                padding: calc(70px + var(--space-2xl)) var(--space-md) var(--space-2xl);
+                min-height: 100vh;
+            }
+
+            .hero-badge {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
+
+            .hero-stats {
+                gap: var(--space-lg);
+                margin-top: var(--space-2xl);
+            }
+
+            .floating-element {
+                display: none;
+            }
+
+            /* Mobile Pricing Cards */
+            .pricing-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+                padding: 0;
+            }
+
+            .pricing-card {
+                padding: var(--space-lg);
+            }
+
+            .pricing-card.featured {
+                transform: none;
+                margin: 0 auto;
+                max-width: 400px;
+                width: 100%;
+            }
+
+            /* Mobile Comparison */
+            .comparison-wrapper {
+                padding-bottom: var(--space-md);
+            }
+
+            .comparison-grid {
+                font-size: 0.85rem;
+            }
+
+            /* Mobile Features */
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+                padding: 0;
+            }
+
+            .feature-card {
+                padding: var(--space-md);
+            }
+
+            /* Mobile CTA */
+            .cta-section {
+                padding: var(--space-2xl) var(--space-md);
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+                max-width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .pricing-card.featured::after {
+                top: var(--space-sm);
+                right: var(--space-sm);
+                font-size: 0.6rem;
+                padding: 4px 10px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .pricing-name {
+                font-size: 1.3rem;
+            }
+
+            .price-amount {
+                font-size: 2rem;
+            }
+
+            .price-currency {
+                font-size: 1rem;
+            }
+        }
+
+        /* Tablet Responsive */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .pricing-container {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 0 auto var(--space-3xl);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-stats {
+                gap: var(--space-2xl);
+            }
+        }
+
+        /* Loading Animation */
+        .loading-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--db-gradient-dark);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeOut 0.5s ease 1.5s forwards;
+        }
+
+        .loading-logo {
+            width: clamp(60px, 15vw, 80px);
+            height: clamp(60px, 15vw, 80px);
+            animation: pulse 1s ease infinite;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* Touch-friendly tap targets */
+        @media (hover: none) and (pointer: coarse) {
+            .pricing-cta,
+            .nav-cta,
+            .cta-button {
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .feature {
+                padding: var(--space-md) 0;
+            }
+        }
+
+        /* Landscape Mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: calc(70px + var(--space-xl)) var(--space-md) var(--space-xl);
+            }
+
+            .hero-stats {
+                margin-top: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-animation">
+        <img src="https://danblocks-com.s3.us-west-2.amazonaws.com/danblocks+logo+transparent.png" alt="Loading" class="loading-logo">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="nav-logo">
+                    <img src="https://danblocks-com.s3.us-west-2.amazonaws.com/danblocks+logo+transparent.png"
+                         alt="DanBlocks Logo"
+                         class="logo-img">
+                    <span class="nav-partnership">
+                        DanBlocks <span class="nav-x">×</span> ProfilDecor
+                    </span>
+                </a>
+                <a href="tel:+40752487271" class="nav-cta">Sună Acum</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="floating-element">📱</div>
+        <div class="floating-element">🎬</div>
+        <div class="floating-element">🚀</div>
+        <div class="floating-element">✨</div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-icon">⚡</span>
+                    <span class="hero-badge-text">OFERTĂ EXCLUSIVĂ 2025</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Transformă-ți Prezența<br>
+                    <span class="hero-title-accent">Social Media</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Construiește sisteme. Câștigă timp. Crește exponențial.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">300%</span>
+                        <span class="stat-label">Creștere Engagement</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Leads Generate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Clienți Fericiți</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer Banner -->
+    <div class="special-offer-banner">
+        <div class="container">
+            <p class="offer-text">
+                🎉 Ofertă Specială: <span class="offer-discount">-33%</span> pentru prima lună la pachetele Professional și Premium!
+            </p>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Simplu si transparent</span>
+                <h2 class="section-title">Alege Pachetul Perfect</h2>
+                <p class="section-subtitle">
+                    Fiecare pachet este creat pentru a maximiza impactul brandului tău în online
+                </p>
+            </div>
+
+            <div class="pricing-container">
+                <!-- Starter Package -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-icon">🚀</div>
+                        <h3 class="pricing-name">Starter</h3>
+                        <p class="pricing-description">Perfect pentru început</p>
+                    </div>
+
+                    <div class="pricing-price">
+                        <div class="price-amount">
+                            <span class="accent-number">2.600</span>
+                            <span class="price-currency">RON</span>
+                        </div>
+                        <div class="price-period">pe lună</div>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">4 videoclipuri</span> lunar
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">8 postări</span> branded lunar
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">8 stories</span> interactive lunar
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                Management Facebook & Instagram
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                Design premium pentru toate materialele
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                Strategie completă de social media
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                Raportare lunară performanță
+                            </span>
+                        </li>
+                    </ul>
+
+                    <a href="tel:+40752487271" class="pricing-cta">Alege Starter</a>
+                </div>
+
+                <!-- Professional Package -->
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <div class="pricing-icon">⭐</div>
+                        <h3 class="pricing-name">Professional</h3>
+                        <p class="pricing-description">Recomandat pentru ProfilDecor</p>
+                    </div>
+
+                    <div class="pricing-price">
+                        <span class="price-original">4.800 RON</span>
+                        <div class="price-amount">
+                            <span class="accent-number">3.216</span>
+                            <span class="price-currency">RON</span>
+                        </div>
+                        <div class="price-period">prima lună</div>
+                        <div class="price-note">*Din luna 2: 4.800 RON/lună</div>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">8 videoclipuri</span> lunar
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">16 postări</span> branded lunar
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">16 stories</span> interactive lunar
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Community Management</span> complet
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Google My Business</span> pentru fiecare locație
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Brandbook</span> personalizat ProfilDecor
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Lead Magnet</span> pentru captare leads
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Aplicație dedicată</span> aprobare conținut
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                Strategie completă de social media
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">2 ore consultanță</span> strategică lunar
+                            </span>
+                        </li>
+                    </ul>
+
+                    <a href="tel:+40752487271" class="pricing-cta accent">Alege Professional</a>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-icon">👑</div>
+                        <h3 class="pricing-name">Premium</h3>
+                        <p class="pricing-description">Maximum de performanță</p>
+                    </div>
+
+                    <div class="pricing-price">
+                        <span class="price-original">7.100 RON</span>
+                        <div class="price-amount">
+                            <span class="accent-number">4.757</span>
+                            <span class="price-currency">RON</span>
+                        </div>
+                        <div class="price-period">prima lună</div>
+                        <div class="price-note">*Din luna 2: 7.100 RON/lună</div>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">12 videoclipuri</span> lunar
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">24 postări</span> branded lunar
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">24 stories</span> interactive lunar
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Community Management Premium</span>
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Google My Business</span> toate locațiile + management
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Brandbook</span> complet personalizat
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Lead Magnets Multiple</span> cu automatizări
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Aplicație dedicată</span> aprobare conținut
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                Strategie completă de social media
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">4 ore consultanță</span> strategică lunar
+                            </span>
+                        </li>
+                        <li class="feature">
+                            <div class="feature-icon">✓</div>
+                            <span class="feature-text">
+                                <span class="feature-highlight">Prioritate maximă</span> pentru toate solicitările
+                            </span>
+                        </li>
+                    </ul>
+
+                    <a href="tel:+40752487271" class="pricing-cta">Alege Premium</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Claritate</span>
+                <h2 class="section-title">Comparație Detaliată</h2>
+            </div>
+
+            <div class="comparison-wrapper">
+                <div class="comparison-grid">
+                    <div class="comparison-cell header">Caracteristici</div>
+                    <div class="comparison-cell header">Starter</div>
+                    <div class="comparison-cell header">Professional ⭐</div>
+                    <div class="comparison-cell header">Premium</div>
+
+                    <div class="comparison-cell feature-name">Videoclipuri/lună</div>
+                    <div class="comparison-cell">4</div>
+                    <div class="comparison-cell">8</div>
+                    <div class="comparison-cell">12</div>
+
+                    <div class="comparison-cell feature-name">Postări/lună</div>
+                    <div class="comparison-cell">8</div>
+                    <div class="comparison-cell">16</div>
+                    <div class="comparison-cell">24</div>
+
+                    <div class="comparison-cell feature-name">Stories/lună</div>
+                    <div class="comparison-cell">8</div>
+                    <div class="comparison-cell">16</div>
+                    <div class="comparison-cell">24</div>
+
+                    <div class="comparison-cell feature-name">Community Management</div>
+                    <div class="comparison-cell"><span class="comparison-cross">✕</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span> Premium</div>
+
+                    <div class="comparison-cell feature-name">Google My Business</div>
+                    <div class="comparison-cell"><span class="comparison-cross">✕</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+
+                    <div class="comparison-cell feature-name">Brandbook</div>
+                    <div class="comparison-cell"><span class="comparison-cross">✕</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+
+                    <div class="comparison-cell feature-name">Lead Magnet</div>
+                    <div class="comparison-cell"><span class="comparison-cross">✕</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span> Multiple</div>
+
+                    <div class="comparison-cell feature-name">Aplicație Aprobare</div>
+                    <div class="comparison-cell"><span class="comparison-cross">✕</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+
+                    <div class="comparison-cell feature-name">Strategie Social Media</div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+                    <div class="comparison-cell"><span class="comparison-check">✓</span></div>
+
+                    <div class="comparison-cell feature-name">Consultanță/lună</div>
+                    <div class="comparison-cell">-</div>
+                    <div class="comparison-cell">2 ore</div>
+                    <div class="comparison-cell">4 ore</div>
+
+                    <div class="comparison-cell feature-name">Prima lună reducere</div>
+                    <div class="comparison-cell">-</div>
+                    <div class="comparison-cell">-33%</div>
+                    <div class="comparison-cell">-33%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">De ce DanBlocks?</span>
+                <h2 class="section-title">Beneficii Incluse</h2>
+                <p class="section-subtitle">
+                    Toate pachetele includ servicii premium pentru succesul tău
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-icon">📱</div>
+                    <h3 class="feature-card-title">Management Complet</h3>
+                    <p class="feature-card-description">
+                        Gestionare profesională Facebook & Instagram cu strategie personalizată
+                    </p>
+                    <div class="feature-card-benefit">
+                        
+                        <div class="benefit-text">
+                            Prezența constantă și profesională pe social media crește încrederea clienților cu <strong>74%</strong> și generează până la <strong>3x</strong> mai multe lead-uri calificate față de managementul sporadic.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">🎨</div>
+                    <h3 class="feature-card-title">Design Premium</h3>
+                    <p class="feature-card-description">
+                        Identitate vizuală consistentă și materiale grafice de înaltă calitate
+                    </p>
+                    <div class="feature-card-benefit">
+                        
+                        <div class="benefit-text">
+                            Un brand vizual consistent crește recunoașterea cu <strong>80%</strong> și determină clienții să plătească cu până la <strong>23%</strong> mai mult pentru produsele tale față de competiție.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">🎬</div>
+                    <h3 class="feature-card-title">Producție Video</h3>
+                    <p class="feature-card-description">
+                        Filmare și editare profesională pentru conținut captivant
+                    </p>
+                    <div class="feature-card-benefit">
+                       
+                        <div class="benefit-text">
+                            Conținutul video generează de <strong>12x</strong> mai mult engagement decât imaginile simple și <strong>85%</strong> dintre cumpărători sunt influențați pozitiv de videoclipurile brandului în decizia de achiziție.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">📍</div>
+                    <h3 class="feature-card-title">Google My Business</h3>
+                    <p class="feature-card-description">
+                        Creare și management conturi pentru toate locațiile fizice
+                    </p>
+                    <div class="feature-card-benefit">
+                        
+                        <div class="benefit-text">
+                            Companiile cu profil GMB optimizat primesc cu <strong>70%</strong> mai multe vizite în locație și <strong>50%</strong> mai multe apeluri. <strong>88%</strong> dintre căutările locale duc la o acțiune în 24 de ore.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">📊</div>
+                    <h3 class="feature-card-title">Analytics & Raportare</h3>
+                    <p class="feature-card-description">
+                        Monitorizare performanță și rapoarte detaliate lunar
+                    </p>
+                    <div class="feature-card-benefit">
+                      
+                        <div class="benefit-text">
+                            Deciziile bazate pe date concrete cresc ROI-ul campaniilor cu <strong>40%</strong> și permit optimizarea bugetului pentru rezultate maxime, economisind până la <strong>30%</strong> din costuri.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">🚀</div>
+                    <h3 class="feature-card-title">Strategie Social Media</h3>
+                    <p class="feature-card-description">
+                        Plan complet de creștere și engagement pe toate canalele sociale
+                    </p>
+                    <div class="feature-card-benefit">
+                    
+                        <div class="benefit-text">
+                            O strategie bine definită crește rata de conversie cu <strong>62%</strong> și reduce costul per achiziție cu <strong>45%</strong>, transformând followerii în clienți loiali pe termen lung.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">
+                    Pregătit să Transformi<br>
+                    Prezența Ta <span class="hero-title-accent">Online?</span>
+                </h2>
+                <p class="cta-subtitle">
+                    Începe colaborarea cu DanBlocks și crește exponențial în mediul digital
+                </p>
+                <div class="cta-buttons">
+                    <a href="tel:+40752487271" class="cta-button primary">
+                        <span>📞</span>
+                        <span>Contactează Acum</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Remove loading animation
+        setTimeout(() => {
+            const loader = document.querySelector('.loading-animation');
+            if (loader) {
+                loader.style.display = 'none';
+            }
+        }, 2000);
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.pricing-card, .feature-card').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Prevent zoom on double tap (iOS)
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
