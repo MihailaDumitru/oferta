@@ -5,60 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Ecran de autentificare custom -->
-    <div id="authScreen" style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, #2c2c30 0%, #1d1d20 100%);
-        z-index: 100000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Inter', sans-serif;
-    ">
-        <div style="
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-        ">
-            <img src="https://danblocks-com.s3.us-west-2.amazonaws.com/danblocks+logo+transparent.png"
-                 style="width: 60px; height: 60px; margin-bottom: 20px;">
-            <h2 style="color: #27272a; margin-bottom: 10px;">Pagină Protejată</h2>
-            <p style="color: #71717a; margin-bottom: 30px;">Introduceți parola pentru a continua</p>
-            <input type="password" id="passwordInput" placeholder="Parolă" style="
-                width: 100%;
-                padding: 12px;
-                border: 1px solid #e5e5e5;
-                border-radius: 8px;
-                font-size: 16px;
-                margin-bottom: 20px;
-            " onkeypress="if(event.key === 'Enter') checkPassword()">
-            <button onclick="checkPassword()" style="
-                width: 100%;
-                padding: 12px;
-                background: #f97316;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                font-size: 16px;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.3s;
-            ">Accesează</button>
-            <p id="errorMsg" style="
-                color: #ef4444;
-                margin-top: 15px;
-                display: none;
-                font-size: 14px;
-            ">Parolă incorectă. Încercați din nou.</p>
-        </div>
-    </div>
+<div id="authScreen" style="
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(135deg, #2c2c30 0%, #1d1d20 100%);
+z-index: 100000;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Inter', sans-serif;
+">
+<div style="
+background: white;
+padding: 40px;
+border-radius: 20px;
+box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+max-width: 400px;
+width: 90%;
+text-align: center;
+">
+<img src="https://danblocks-com.s3.us-west-2.amazonaws.com/danblocks+logo+transparent.png"
+style="width: 60px; height: 60px; margin-bottom: 20px;">
+<h2 style="color: #27272a; margin-bottom: 10px; font-family: 'CalHeading', sans-serif;">Acces Exclusiv</h2>
+<p style="color: #71717a; margin-bottom: 10px; font-size: 14px;">
+Construiește sisteme. Câștigă timp. Crește exponențial.
+</p>
+<p style="color: #a1a1aa; margin-bottom: 30px; font-size: 13px;">
+Această ofertă specială este disponibilă doar pentru partenerii selectați. Introduceți codul de acces pentru a continua.
+</p>
+<input type="password" id="passwordInput" placeholder="Cod de acces" style="
+width: 100%;
+padding: 12px;
+border: 1px solid #e5e5e5;
+border-radius: 8px;
+font-size: 16px;
+margin-bottom: 20px;
+" onkeypress="if(event.key === 'Enter') checkPassword()">
+<button onclick="checkPassword()" style="
+width: 100%;
+padding: 12px;
+background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+color: white;
+border: none;
+border-radius: 8px;
+font-size: 16px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s;
+font-family: 'CalHeading', sans-serif;
+">Deblochează Oferta</button>
+<p id="errorMsg" style="
+color: #ef4444;
+margin-top: 15px;
+display: none;
+font-size: 14px;
+">Cod incorect. Verificați și încercați din nou.</p>
+<p style="
+color: #a1a1aa;
+margin-top: 20px;
+font-size: 12px;
+">Powered by DanBlocks</p>
+</div>
+</div>
+
 
     <script>
         function checkPassword() {
